@@ -1,7 +1,5 @@
 <?php
 include('config.php');
-$category = $_GET['c'];  
-$subcategory = $_GET['sc'];
 if (isset($_POST['submit']))   
     {
       $id = $_GET['pid'];
@@ -9,7 +7,7 @@ if (isset($_POST['submit']))
       $i_price = mysqli_real_escape_string($link, $_POST['price']);
       $i_image = mysqli_real_escape_string($link, $_POST['image']);
       $i_info = mysqli_real_escape_string($link, $_POST['info']);
-      $sql = 'UPDATE '.$category.' SET name ="' . $i_name .'", img ="'.$i_image.'", price ="'.$i_price.'", info ="'.$i_info.'" where category ="'.$subcategory.'" and id ="'.$id.'"';
+      $sql = 'UPDATE products SET name ="' . $i_name .'", img ="'.$i_image.'", price ="'.$i_price.'", info ="'.$i_info.'" where id ="'.$id.'"';
       if (!mysqli_query($link, $sql))   
       {   
         $error = 'Error updating: ' . mysqli_error($link);   
@@ -19,13 +17,15 @@ if (isset($_POST['submit']))
       
       include('update.html.php');  
     }
-if (isset($_POST['add']))   
+else if (isset($_POST['add']))   
     {   
+      $category = $_GET['c'];  
+      $subcategory = $_GET['sc'];
       $i_name = mysqli_real_escape_string($link, $_POST['name']);
       $i_price = mysqli_real_escape_string($link, $_POST['price']);
       $i_image = mysqli_real_escape_string($link, $_POST['image']);
       $i_info = mysqli_real_escape_string($link, $_POST['info']);
-      $sql = 'INSERT INTO '.$category.' SET name="'.$i_name.'", price='.$i_price.', img="'.$i_image.'", info="'.$i_info.'", category="'.$subcategory.'"';
+      $sql = 'INSERT INTO products SET name="'.$i_name.'", price="'.$i_price.'", img="'.$i_image.'", info="'.$i_info.'", category="'.$category.'", subcategory="'.$subcategory.'"';
       if (!mysqli_query($link, $sql))   
       {   
         $error = 'Error updating: ' . mysqli_error($link);   
@@ -34,10 +34,10 @@ if (isset($_POST['add']))
       }
       include('update.html.php');  
     }
-if (isset($_POST['delete']))   
+else if (isset($_POST['delete']))   
     {
       $id = $_GET['pid'];
-      $sql = 'DELETE FROM '.$category.' WHERE id="'.$id.'"';
+      $sql = 'DELETE FROM products WHERE id="'.$id.'"';
       if (!mysqli_query($link, $sql))   
       {   
         $error = 'Error updating: ' . mysqli_error($link);   

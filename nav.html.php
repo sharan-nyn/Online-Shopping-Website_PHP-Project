@@ -1,16 +1,22 @@
+    <?php
+     session_start();
+            if(isset($SESSION['cart'])){
+                $cart = $SESSION['cart'];
+            }else{
+                $cart = array();
+                $SESSION['cart'] = $cart;
+            }
+    ?>
     <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="container">
-            <a class="navbar-brand" href="/shopping"><b><?php echo $company; ?></b></a>
+            <a class="navbar-brand" href="/shopping"><b>ShopShop</b></a>
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav ml-auto">
-                    <li>
-                        
-                    </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Cart <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="cart.php">Cart (<?php echo count($cart);?>)<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>

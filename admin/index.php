@@ -1,17 +1,6 @@
 <?php
     include('common.html.php');
     include('config.php');
-    $result = mysqli_query($link, "SELECT id, name, img, price, info FROM electronics where category ='mobile'");    
-    if (!$result)    
-    {    
-        $error = 'Error fetching electronics items: ' . mysqli_error($link);    
-        include 'error.html.php';    
-        exit();
-    }
-    while ($row = mysqli_fetch_array($result))    
-    {    
-        $items[] = array('id' => $row['id'], 'name' => $row['name'], 'img' => $row['img'], 'price' => $row['price'], 'info' => $row['info']);    
-    }
 ?>
 <body>
 

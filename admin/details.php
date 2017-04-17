@@ -1,12 +1,10 @@
 <?php
     include('config.php');
     include('common.html.php');
-    $category = $_GET['c'];  
-    $subcategory = $_GET['sc'];
     $id = $_GET['pid'];
-    $formlink = "update.php?c=".$category."&sc=".$subcategory."&pid=".$id."&submit";
-    $deletelink = "update.php?c=".$category."&sc=".$subcategory."&pid=".$id."&delete";
-    $query = "SELECT id, name, img, price, info FROM ".$category." where category ='".$subcategory."' and id ='".$id."'";
+    $formlink = "update.php?pid=".$id."&submit";
+    $deletelink = "update.php?pid=".$id."&delete";
+    $query = "SELECT id, name, img, price, info FROM products where id ='".$id."'";
     $result = mysqli_query($link, $query);    
     if (!$result)    
     {    
