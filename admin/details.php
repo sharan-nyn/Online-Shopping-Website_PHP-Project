@@ -12,10 +12,7 @@
         include 'error.html.php';    
         exit();
     }
-    while ($row = mysqli_fetch_array($result))    
-    {    
-        $items[] = array('id' => $row['id'], 'name' => $row['name'], 'img' => $row['img'], 'price' => $row['price'], 'info' => $row['info']);    
-    }
+    $item = mysqli_fetch_array($result);
 ?>
 
 <body>
@@ -26,7 +23,6 @@
             <div class="col-lg-9">
 
                 <div class="row">
-                <?php foreach ($items as $item): ?>
                     <div class="col-lg-4 col-md-6 mb-4">
                         
                             <a href="#"><img class="card-img-top img-fluid" src="<?php echo htmlspecialchars($item['img'], ENT_QUOTES,'UTF-8'); ?>" alt="" style="padding:5px"></a>
@@ -67,7 +63,6 @@
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
                 <!-- /.row -->
 
             </div>

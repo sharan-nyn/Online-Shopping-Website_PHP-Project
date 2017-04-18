@@ -1,14 +1,6 @@
  <?php include ('common.html.php');
     include('config.php');
     $total = 0;
-    $query = "SELECT id, name, img, price, info FROM products";
-    $result = mysqli_query($link, $query);    
-    if (!$result)    
-    {    
-        $error = 'Error fetching items: ' . mysqli_error($link);    
-        include 'error.html.php';    
-        exit();
-    }
  ?>
 <body>
     <?php function ShowCart() {?>
@@ -27,7 +19,11 @@
       if(isset($_REQUEST['addToCart']))
         {
         $id = $_GET['pid'];
-        array_push($_SESSION['cart'], $id);
+        if(isset($_SESSION['cart'][$id])){
+            $_SESSION['cart'][$id] += 1;
+        }else{
+            $_SESSION['cart'][$id] = 1;
+        }
         ShowCart();
         exit();
         }
@@ -37,19 +33,26 @@
         EmptyCart();
         exit();
       }
-        while ($row = mysqli_fetch_array($result))    
-        {   foreach ($_SESSION['cart'] as $cid) {
-            if(in_array($row['id'], $_SESSION['cart']) && $row['id'] == $cid)
-            $items[] = array('id' => $row['id'], 'name' => $row['name'], 'img' => $row['img'], 'price' => $row['price'], 'info' => $row['info']);
-        } 
-    }
+      if(count($_SESSION['cart']) == 0)
+      {
+        EmptyCart();
+        exit();
+      }
+     $query = "SELECT id, name, img, price, info FROM products WHERE id IN (".implode(",", array_keys($_SESSION['cart'])).")";
+     $result = mysqli_query($link, $query);    
+     if (!$result)    
+     {    
+        $error = 'Error fetching items: ' . mysqli_error($link);
+        include 'error.html.php';    
+        exit();
+     }
     ?>
     <div class="col-lg-9">
             <br><br>
             <h1>Your Shopping Cart</h1>
         <hr>
         <div class="row">
-            <?php foreach ($items as $item): ?>
+            <?php while ($item = mysqli_fetch_array($result)): ?>
                     <div class="col-lg-7">
                         <div class="row">
                             <div class ="col-4 text-center" >
@@ -57,11 +60,13 @@
                             </div>
                             <div class = "col-8">
                                 <h4 class="text-primary"><?php echo $item['name']; ?></h4>
-                                <h5>Rs.<?php echo $item['price']; $total += $item['price']; ?></h5>
+                                <h5>Quantity: <?php echo $_SESSION['cart'][$item['id']]; ?></h5>
+                                <h5>Rs.<?php echo $item['price']; $total += (str_replace(",","",$item['price']) * $_SESSION['cart'][$item['id']]); ?></h5>
                             </div>
                         </div>
+                        <p></p>
                     </div>
-                <?php endforeach; ?>
+               <?php endwhile; ?>
         </div>
         <hr>
         <div class="row">

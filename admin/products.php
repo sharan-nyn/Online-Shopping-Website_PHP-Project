@@ -12,14 +12,6 @@
         include 'error.html.php';    
         exit();
     }
-    while ($row = mysqli_fetch_array($result))    
-    {    
-        $items[] = array('id' => $row['id'], 'name' => $row['name'], 'img' => $row['img'], 'price' => $row['price'], 'info' => $row['info']);    
-    }
-    if (!$row['id'])    
-    {    
-        $flag = 0;
-    }
 ?>
 <body>
     <?php include ('list.html.php');?>
@@ -28,12 +20,12 @@
                  <div class="col-lg-12 col-md-12 mb-4">
                     <a href=<?php echo $url2;?> role="button" class="btn btn-success col-2 text-center float-right"><b>+</b></a>
                 </div>
-                <?php foreach ($items as $item): ?>
+                <?php while ($item = mysqli_fetch_array($result)): ?>
                     <?php $url = "details.php?pid=".$item['id'];
                         ?>
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
-                            <a href="&id=1" class="text-center"><img class="card-img-top img-fluid" src="<?php echo htmlspecialchars($item['img'], ENT_QUOTES,'UTF-8'); ?>" alt="" style="padding:5px;height: 200px;"></a>
+                            <a href="&id=1" class="text-center"><img class="card-img-top img-fluid" src="<?php echo htmlspecialchars($item['img'], ENT_QUOTES,'UTF-8'); ?>" alt="" style="padding:5px;height: auto;width: auto; max-width: 220px; max-height: 220px;"></a>
                             <div class="card-block">
                                 <h4 class="card-title"><a href="#"><?php echo $item['name']; ?></a></h4>
                                 <h5>Rs.<?php echo $item['price']; ?></h5>
@@ -43,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
                 </div>
                 <!-- /.row -->
 
