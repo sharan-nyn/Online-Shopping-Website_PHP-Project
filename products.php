@@ -8,7 +8,7 @@
     $result = mysqli_query($link, $query);    
     if (!$result)    
     {    
-        $error = 'Error fetching electronics items: ' . mysqli_error($link);    
+        $error = 'Error fetching items: ' . mysqli_error($link);    
         include 'error.html.php';    
         exit();
     }
