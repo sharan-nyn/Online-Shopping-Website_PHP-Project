@@ -7,7 +7,7 @@
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/shopping">Logout</a>
+                        <a class="nav-link" href="login.php?&logout">Logout</a>
                     </li>
                 </ul>
             </div>
