@@ -55,7 +55,7 @@
                                   <button type="submit" class="btn btn-success" name="submit">Submit</button>
                                   <a href="javascript:history.go(-1)" role="button" class="btn btn-warning">Cancel</a>
                                   </form>
-                                <br>
+                                <p></p>
                                 <form action="<?php echo $deletelink?>" method="post">
                                   <button type="submit" class="btn btn-danger" name="delete">Delete Item (Warning, Once Done No Undo)</button>
                                 </form>
