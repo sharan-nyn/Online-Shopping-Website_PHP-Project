@@ -1,26 +1,14 @@
 <?php
-<<<<<<< HEAD
     include('admin/config.php');
     include('common.html.php');
     $category = $_GET['c'];  
     $subcategory = $_GET['sc'];
-=======
-    $company = "ShopShop";
-    include('common.html.php');
-    $category = $_GET['c'];  
-    $subcategory = $_GET['sc'];
-    include('config.php');
->>>>>>> 0342aff341b9345020c70878a7a3d11b6f42c1cb
     $query = "SELECT id, name, img, price, info FROM products where category ='".$category."' and subcategory = '".$subcategory."'";
     $result = mysqli_query($link, $query);    
     if (!$result)    
     {    
         $error = 'Error fetching items: ' . mysqli_error($link);    
-<<<<<<< HEAD
         include 'admin/error.html.php';    
-=======
-        include 'error.html.php';    
->>>>>>> 0342aff341b9345020c70878a7a3d11b6f42c1cb
         exit();
     }
 ?>
@@ -29,10 +17,6 @@
     <?php include('nav.html.php'); ?>
             <div class="col-lg-9">
                 <div class="row">
-<<<<<<< HEAD
-=======
-
->>>>>>> 0342aff341b9345020c70878a7a3d11b6f42c1cb
                 <?php while ($item = mysqli_fetch_array($result)): ?>
                     <?php $url = "details.php?pid=".$item['id']; ?>
                     <div class="col-lg-4 col-md-6 mb-4">
@@ -58,11 +42,7 @@
     <br><br>
     <!-- /.container -->
 
-<<<<<<< HEAD
     <?php include ('admin/footer.html.php');?>
-=======
-    <?php include ('footer.html.php');?>
->>>>>>> 0342aff341b9345020c70878a7a3d11b6f42c1cb
    
 
 </body>
