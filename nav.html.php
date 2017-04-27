@@ -14,9 +14,6 @@
                         <a class="nav-link" href="cart.php">Cart(<?php echo count($_SESSION['cart']);?>)<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="login.php?&logout">Logout</a>
                     </li>
                 </ul>
