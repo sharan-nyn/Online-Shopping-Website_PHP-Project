@@ -19,7 +19,7 @@
             <div class="col-lg-9">
                <div class="row">
                     <div class="col-lg-4 col-md-6 mb-4 text-center">
-                        <img class="card-img-top img-fluid" src="<?php echo htmlspecialchars($item['img'], ENT_QUOTES,'UTF-8'); ?>" alt="" style=" max-height: 300px;">
+                        <img class="card-img-top img-fluid" src="../shopping/img/<?php echo htmlspecialchars($item['img'], ENT_QUOTES,'UTF-8'); ?>" alt="" style=" max-height: 300px;">
                     </div>
                     <div class="col-lg-8">
                         <h4 class="text-primary"><?php echo $item['name']; ?></h4>

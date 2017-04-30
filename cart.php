@@ -56,7 +56,7 @@
                     <div class="col-lg-7">
                         <div class="row">
                             <div class ="col-4 text-center" >
-                               <img class="card-img-top img-fluid" src="<?php echo htmlspecialchars($item['img'], ENT_QUOTES,'UTF-8'); ?>" alt="" style="padding:5px; max-height: 150px">
+                               <img class="card-img-top img-fluid" src="../shopping/img/<?php echo htmlspecialchars($item['img'], ENT_QUOTES,'UTF-8'); ?>" alt="" style="padding:5px; max-height: 150px">
                             </div>
                             <div class = "col-8">
                                 <h4 class="text-primary"><?php echo $item['name']; ?></h4>
